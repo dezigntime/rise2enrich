@@ -10,14 +10,14 @@ var gulp = require('gulp'),
 // Styles
 gulp.task('styles', function() {
 
-    return gulp.src('assets/styles/source/**/*.scss')
+    return gulp.src('assets/styles/source/main.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(plugins.autoprefixer('last 2 versions', 'ie 9', 'ios 6', 'android 4'))
         .pipe(gulp.dest('assets/styles/build'))
         .pipe(cleanCSS({ keepSpecialComments: 1 }))
         .pipe(plugins.livereload(server))
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./css'))
         .pipe(plugins.notify({ message: 'Styles task complete' }));
 
 });
