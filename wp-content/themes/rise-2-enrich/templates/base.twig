@@ -9,13 +9,39 @@
 	<body class="{{body_class}} rise-{{foo}}" data-template="base.twig">
 		<header class="header" >
 			{% block header %}
-				<div class="wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="/" rel="home">{{site.name}}</a>
-					</h1>
-					<nav id="nav-main" class="nav-main" role="navigation">
-						{% include "menu.twig" with {'menu': menu.get_items} %}
-					</nav><!-- #nav -->
+				<div class="wrapper container">
+					<div class="col-md-4">
+						<nav id="nav-main" class="nav-main" role="navigation">
+							{% include "menu.twig" with {'menu': menu.get_items} %}
+						</nav><!-- #nav -->
+					</div>
+
+					<div class="col-md-4">
+						<h1 class="hdr-logo" role="banner">
+							<a class="hdr-logo-link" href="/" rel="home">{{site.name}}</a>
+						</h1>
+					</div>
+
+					<div class="col-md-2 text-center">
+						<nav id="nav-main" class="nav-main" role="navigation">
+							{% include "menu-right.twig" with {'menu': menu_right.get_items} %}
+						</nav><!-- #nav -->
+					</div>
+
+					<div class="col-md-2">
+						<ul class="social-block pull-left">
+							<li>
+								<span class="icon"> <i class="fa fa-twitter" aria-hidden="true"></i></span>
+							</li>
+							<li>
+								<span class="icon"> <i class="fa fa-facebook" aria-hidden="true"></i></span>
+							</li>
+						</ul>
+
+					</div>
+
+
+
 				</div>
 			{% endblock %}
 		</header>

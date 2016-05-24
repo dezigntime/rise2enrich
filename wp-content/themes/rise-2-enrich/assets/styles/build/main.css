@@ -7679,3 +7679,51 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
+
+body.home {
+  background: url(https://upload.wikimedia.org/wikipedia/commons/8/82/2009-0617-Ontonagon-school.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.home {
+  background: url(http://www.valleytech.k12.ma.us/cms/lib8/MA01907491/Centricity/ModuleInstance/1627/School%20Entrance.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.header {
+  background-color: #01535F;
+}
+
+.header ul {
+  list-style: none;
+}
+
+.header ul li {
+  display: inline-block;
+}
+
+.header ul li a {
+  color: #fff;
+}
+
+.header .nav-main {
+  margin-top: 25px;
+}
+
+.header .social-block {
+  margin-top: 25px;
+  list-style: none;
+}
+
+.header .social-block li {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 4px 0px;
+  width: 27px;
+  text-align: center;
+}
+
+.header .social-block li .icon {
+  color: #01535F;
+}

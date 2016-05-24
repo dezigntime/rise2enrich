@@ -6,3 +6,41 @@
 
 // Sections
 @import "sections/home.scss";
+
+
+
+.header {
+  background-color: #01535F;
+  ul{
+    list-style: none;
+    li{
+      display: inline-block;
+      a{
+        color: #fff;
+      }
+    }
+  }
+
+  .nav-main{
+    margin-top:25px;
+  }
+
+  .social-block{
+      margin-top:25px;
+      list-style: none;
+      li{
+        display: inline-block;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 4px 0px;
+        width: 27px;
+        text-align: center;
+        .icon{
+          color: #01535F;
+        }
+
+      }
+  }
+
+}
+
