@@ -10,19 +10,22 @@
 
 
 .header {
-  background-color: #01535F;
+  background-color: #3cb7f7;
   ul{
     list-style: none;
     li{
       display: inline-block;
+      margin: 0 15px 0 15px;
       a{
         color: #fff;
+        font-size:20px;
       }
     }
   }
 
   .nav-main{
-    margin-top:25px;
+    margin-top: 50px;
+    margin-bottom: 18px;
   }
 
   .social-block{
@@ -42,5 +45,34 @@
       }
   }
 
+}
+
+
+.hdr-logo{
+  img {
+    width: 130px;
+    position: absolute;
+    z-index: 999;
+    left: 33%;
+  }
+}
+
+
+.site-left-col{
+  background: rgba(0,0,0,0.8);
+  overflow: auto;
+  height:100vh;
+  color: #fff;
+  padding:30px;
+}
+
+.site-right-col{
+  padding:30px;
+  overflow: auto;
+  height:100vh;
+}
+
+h1{
+  color: #3DB7F5;
 }
 

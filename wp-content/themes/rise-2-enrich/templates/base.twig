@@ -18,7 +18,10 @@
 
 					<div class="col-md-4">
 						<h1 class="hdr-logo" role="banner">
-							<a class="hdr-logo-link" href="/" rel="home">{{site.name}}</a>
+							<a class="hdr-logo-link" href="/" rel="home">
+								{# site.name #}
+								<img class="text-center" srcset="{{ theme.link }}/assets/images/home/rise_main_logo.png@2x.jpg 2x" src="{{ theme.link }}/assets/images/home/rise_main_logo.png" />
+							</a>
 						</h1>
 					</div>
 
@@ -60,11 +63,13 @@
 			{% endif %}
 		</section>
 
+		{#
 		{% block footer %}
 			<footer id="footer">
 				{% include 'footer.twig' %}
 			</footer>
 			{{ function('wp_footer') }}
 		{% endblock %}
+		#}
 	</body>
 </html>
