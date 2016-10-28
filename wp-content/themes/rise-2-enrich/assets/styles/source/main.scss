@@ -11,17 +11,20 @@
 
 .header {
   background-color: #3cb7f7;
-  ul{
-    list-style: none;
-    li{
-      display: inline-block;
-      margin: 0 15px 0 15px;
-      a{
-        color: #fff;
-        font-size:20px;
+  nav{
+    ul{
+      list-style: none;
+      li{
+        display: inline-block;
+        margin: 0 15px 0 15px;
+        a{
+          color: #fff;
+          font-size:20px;
+        }
       }
     }
   }
+
 
   .nav-main{
     margin-top: 50px;
@@ -29,7 +32,7 @@
   }
 
   .social-block{
-      margin-top:25px;
+      margin-top: 50px;
       list-style: none;
       li{
         display: inline-block;

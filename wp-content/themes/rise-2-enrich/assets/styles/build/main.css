@@ -7694,16 +7694,16 @@ body.home {
   background-color: #3cb7f7;
 }
 
-.header ul {
+.header nav ul {
   list-style: none;
 }
 
-.header ul li {
+.header nav ul li {
   display: inline-block;
   margin: 0 15px 0 15px;
 }
 
-.header ul li a {
+.header nav ul li a {
   color: #fff;
   font-size: 20px;
 }
@@ -7714,7 +7714,7 @@ body.home {
 }
 
 .header .social-block {
-  margin-top: 25px;
+  margin-top: 50px;
   list-style: none;
 }
 
