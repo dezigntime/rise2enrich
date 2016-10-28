@@ -2,8 +2,8 @@
 Contributors: jarednova, connorjburton, lggorman
 Tags: template engine, templates, twig
 Requires at least: 3.7
-Stable tag: 1.0.1
-Tested up to: 4.5.1
+Stable tag: 1.1.8
+Tested up to: 4.6
 PHP version: 5.3.0 or greater
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -40,6 +40,85 @@ Timber is great for any WordPress developer who cares about writing good, mainta
 
 
 == Changelog ==
+
+= 1.1.8 =
+* Fixed image generation when images are updated/deleted by WordPress (thanks @dudewithamood)
+
+= 1.1.7.1 =
+* Quick fix for backwards compatibility in some situations
+
+= 1.1.7 =
+* A new PostQuery object that comes _with_ pagination (thanks @lggorman).
+* You can pass an array of post types to `post.children()` (thanks @njbarrett)
+
+= 1.1.6 = 
+* Kill those transients! Timber now wipes expired ones away 9a5851bf36110dcb399e277d51230f1addb0c53c
+* Fixed a warning that was annoying and nobody liked and didn't have any friends c53b4c832cfced01157f8196688468ad3318d3fb
+
+= 1.1.5 =
+* Removed change for custom loaders due to incompatability with Gantry
+
+= 1.1.4 =
+* Native support for Co-Authors Plus! just use `{{ post.authors }}` 939331e282fd54bf3e210645964504304f2b071b
+* New filter to enable PW propmpt for PW protected posts (`timber/post/content/show_password_form_for_protected`) 0f9b20ec90b34059634c25bc27671875c18f8fcb
+* New filter for custom loaders (`timber/loader/custom`) (thanks @tnottu!) 9097984a7c3df23068056d7835465e0690338567
+* Fixed some updating bugs with 4.6 (thanks @daronspence) 16b8bd71571be71b298e6306abe2cd4b95d8c9e8
+* You can now count Query results (thanks Evan Mattson) 141624a0ac18d9dcce62a2a681134009a2b79814
+
+= 1.1.3 =
+* New escapers! (thanks @matgargano) c7e8ed34da6fcd13bdc9005c04045f3a6b33595b
+* Fix to how categories work in Timber::get_posts 49f6007db3f829097f82ed41d389dd39053fb84a
+* Fix to usage of class maps in Timber::get_posts (thanks @vilpersson) b1387e443850aa021a0a70203bc20d238d4b21cb
+* Added Post::password_required method (thanks @marclarr) 2e685ce3d05c50e879817e51256202e032e77122
+* You can filter the link markup for Post::get_preview (thanks @LiljebergXYZ) b8100d7f2601b4da40bcc0a873c071b6ecf267f1
+
+= 1.1.2 =
+* Fix to how post IDs are retrieved (thanks @lggorman) 798acd90ee603de2d009828127bdeaab503beb10
+* Fixes to pagination in search (@jarednova) 1d1ab67f124b02d8c60646f7b133abdf68cedc38
+* Fixes to hooks for Timber Debug Bar (@jarednova) 82a914ec0be5be1011a15c1584c2c8e2999f1c1c
+
+= 1.1.1 =
+* Fixed 301 redirects for pagination (thanks @xavivars)
+* Added new escaping filter options for `|e('wp_kses_post')` and `|e('esc_url')`(thanks @matgargano)
+* Fixed pagination warning (thanks @nikola3244)
+* More test coverage
+* Fixed issue with archive limits (@jarednova)
+
+= 1.1.0 =
+* Fixed how Timber loads with Composer (thanks @connorjburton and @mrgrain)
+* Updated docs! (thanks @lggorman and @kateboudreau)
+* Fixed ImageHelper paths (thanks @TuureKaunisto)
+* Added new filters for render (thanks @johnbillion)
+* Fixed issue with timestamp conversion (thanks @thedamon)
+* Fixed localization bugs (thanks @FlyingDR)
+
+= 1.0.5 =
+* Restored prior `{{ post.type }}` behavior for existing custom fields (@jarednova) 6c9574912e526b8589eb134b79820c7e239a1dda
+* Fixed errors in PHP 7 (@FlyingDR) 48ba0fc125c2d19eeb0de0a895a83a9d3bb5a398
+* Misc bug fixes and upkeep (@connorjburton + @jarednova)
+
+= 1.0.4 =
+* New method for `{{ post.type }}` this makes it easy to access things like `{{post.type.labels.name}}` right in Twig https://github.com/timber/timber/pull/1003
+* New method for `{{ post.preview }}` which makes it easy to customize like `{{post.preview.length(50).read_more("Keep Reading").end('........')}}` https://github.com/timber/timber/pull/1015
+* Added `Timber::get_term` (thanks @connorjburton!) 58fe671757b30a8eb9de2589bbb817448662e121
+* Fix for revision issue (thanks @dknoben!) 70de6640c68a1321394aaa95202dea70e0755664
+* Fix for issue with uppercase file extensions (thanks @connorjburton) 5632359329894d1b95cd643470950d319628f4c6
+* Better handling for gifs (thanks @connorjburton) 91c40b852c056e0f096345d976767f2e5e993ce9
+* Fix on some old class names in there (thanks @mrgrain) 63fe60ba18c6fce5d545983334af3f752c7c2755
+* Pagination with post counts (thanks @lggorman) 2bcacbe50c90c7936da61d29238e3b52910a3ff9
+* Remove `Timber::get_pids` (@jarednova) 4278d11d25aaca0d60cbde32c32783dc0effac6b
+* Fixed deprecation in Twig (thanks @simonmilz) 6c80f1d5fd48b8fcbd335f6c8e9c6fed1b008e26
+* Handle ACF image arrays (thanks @connorjburton) 039be5d880fa7f9c9763f4ebd6c40863f4820e0a
+
+= 1.0.3 =
+* Hot fix for PHP 5.3 error
+
+= 1.0.2 =
+* Fixed possible infinite loop with Timber::get_context (thanks @connorjburton) 376928d59dd5f2dd2f389c61217530ba54e40b24
+* Removed bug in Term (thanks @Jmayhak) a5e3c30b9eb12acea06bc914cd6b3673ead06012
+* {{ user.avatar }} now returns an Image object (thanks @connorjburton) 51dd7329aee6212490daee5742280286e221f2e8
+* Attention Comment Form fans! {{ post.comment_form }} now gives you a friggin' comment form 9009ac12536a0199a1bb071ac41b2e91152bef4d
+* Helper\comment_form also gives you a comment form. 9009ac12536a0199a1bb071ac41b2e91152bef4d
 
 = 1.0.1 =
 * {{ user.avatar }} property is now available (thanks @connorjburton) d21eb85

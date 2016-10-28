@@ -3,13 +3,14 @@
 namespace Timber;
 
 use Timber\Helper;
-use Timber\PostsCollection;
+use Timber\PostCollection;
 
 // Exit if accessed directly
-if ( !defined('ABSPATH') )
+if ( !defined('ABSPATH') ) {
 	exit;
+}
 
-class QueryIterator implements \Iterator {
+class QueryIterator implements \Iterator, \Countable {
 
 	/**
 	 *
@@ -17,17 +18,18 @@ class QueryIterator implements \Iterator {
 	 * @var WP_Query
 	 */
 	private $_query = null;
-	private $_posts_class = 'TimberPost';
+	private $_posts_class = 'Timber\Post';
 
-	public function __construct( $query = false, $posts_class = 'TimberPost' ) {
+	public function __construct( $query = false, $posts_class = 'Timber\Post' ) {
 		add_action('pre_get_posts', array($this, 'fix_number_posts_wp_quirk'));
-		if ( $posts_class )
+		add_action('pre_get_posts', array($this, 'fix_cat_wp_quirk'));
+		if ( $posts_class ) {
 			$this->_posts_class = $posts_class;
+		}
 
 		if ( is_a($query, 'WP_Query') ) {
 			// We got a full-fledged WP Query, look no further!
 			$the_query = $query;
-
 		} elseif ( false === $query ) {
 			// If query is explicitly set to false, use the main loop
 			global $wp_query;
@@ -37,11 +39,9 @@ class QueryIterator implements \Iterator {
 		} elseif ( Helper::is_array_assoc($query) || (is_string($query) && strstr($query, '=')) ) {
 			// We have a regularly formed WP query string or array to use
 			$the_query = new \WP_Query($query);
-
 		} elseif ( is_numeric($query) || is_string($query) ) {
 			// We have what could be a post name or post ID to pull out
 			$the_query = self::get_query_from_string($query);
-
 		} elseif ( is_array($query) && count($query) && (is_integer($query[0]) || is_string($query[0])) ) {
 			// We have a list of pids (post IDs) to extract from
 			$the_query = self::get_query_from_array_of_ids($query);
@@ -51,7 +51,6 @@ class QueryIterator implements \Iterator {
 		} else {
 			Helper::error_log('I have failed you! in '.basename(__FILE__).'::'.__LINE__);
 			Helper::error_log($query);
-
 			// We have failed hard, at least let get something.
 			$the_query = new \WP_Query();
 		}
@@ -60,9 +59,17 @@ class QueryIterator implements \Iterator {
 
 	}
 
+	public function post_count() {
+		return $this->_query->post_count;
+	}
+
+	public function get_pagination( $prefs ) {
+		return new Pagination($prefs, $this->_query);
+	}
+
 	public function get_posts( $return_collection = false ) {
 		if ( isset($this->_query->posts) ) {
-			$posts = new PostsCollection($this->_query->posts, $this->_posts_class);
+			$posts = new PostCollection($this->_query->posts, $this->_posts_class);
 			return ($return_collection) ? $posts : $posts->get_posts();
 		}
 	}
@@ -71,8 +78,9 @@ class QueryIterator implements \Iterator {
 	// GET POSTS
 	//
 	public static function get_query_from_array_of_ids( $query = array() ) {
-		if ( !is_array($query) || !count($query) )
+		if ( !is_array($query) || !count($query) ) {
 			return null;
+		}
 
 		return new \WP_Query(array(
 				'post_type'=> 'any',
@@ -137,10 +145,20 @@ class QueryIterator implements \Iterator {
 	}
 
 	//get_posts users numberposts
-	static function fix_number_posts_wp_quirk( $query ) {
+	public static function fix_number_posts_wp_quirk( $query ) {
 		if ( isset($query->query) && isset($query->query['numberposts'])
 				&& !isset($query->query['posts_per_page']) ) {
 			$query->set('posts_per_page', $query->query['numberposts']);
+		}
+		return $query;
+	}
+
+	//get_posts uses category, WP_Query uses cat. Why? who knows...
+	public static function fix_cat_wp_quirk( $query ) {
+		if ( isset($query->query) && isset($query->query['category'])
+				&& !isset($query->query['cat']) ) {
+			$query->set('cat', $query->query['category']);
+			unset($query->query['category']);
 		}
 		return $query;
 	}
@@ -150,7 +168,7 @@ class QueryIterator implements \Iterator {
 	 * @param  WP_Query $query the original query recived from WordPress
 	 * @return WP_Query
 	 */
-	static function handle_maybe_custom_posts_page( $query ) {
+	public static function handle_maybe_custom_posts_page( $query ) {
 		if ( $custom_posts_page = get_option('page_for_posts') ) {
 			if ( isset($query->query['p']) && $query->query['p'] == $custom_posts_page ) {
 				return new \WP_Query(array('post_type' => 'post'));
@@ -159,4 +177,16 @@ class QueryIterator implements \Iterator {
 		return $query;
 	}
 
+	/**
+	 * Count elements of an object.
+	 *
+	 * Necessary for some Twig `loop` variable properties.
+	 * @see http://twig.sensiolabs.org/doc/tags/for.html#the-loop-variable
+	 * @link  http://php.net/manual/en/countable.count.php
+	 * @return int The custom count as an integer.
+	 * The return value is cast to an integer.
+	 */
+	public function count() {
+		return $this->post_count();
+	}
 }
