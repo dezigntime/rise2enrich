@@ -24,4 +24,43 @@
 $context = Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post;
+
+
+$menu = new TimberMenu();
+
+
+$currentPageName =  $post->post_title;
+
+
+$childMenu = [];
+$isTopLevelPage = false;
+
+foreach ($menu->items as $menuItem) {
+    if( strcasecmp($menuItem->name, $currentPageName) === 0 && !empty($menuItem->children) ){
+        $childMenu = $menuItem->children;
+        break;
+    }
+}
+
+foreach ($menu->items as $menuItem) {
+
+//    echo json_encode($menuItem);
+//
+//    echo "Page Level: " .$menuItem->level;
+//    echo " Page Name: " . $menuItem->name. "<br/>";
+//
+//    echo " Page Name: " . $menuItem->name;
+//    echo " Page Name: " . $currentPageName . "<br/><br/>";
+
+
+
+    if($menuItem->level === 0 && strcasecmp($menuItem->name, $currentPageName) === 0){
+        $isTopLevelPage = true;
+        break;
+    }
+}
+
+$context['pageChildren'] = $childMenu;
+$context['isTopLevelPage'] = $isTopLevelPage;
+
 Timber::render( array( 'page-' . $post->post_name . '.twig', 'page.twig' ), $context );

@@ -1,4 +1,4 @@
-<ul>
+<ul class="hidden">
 {% for item in menu %}
 	<li class="{{item.classes | join(' ')}}">
 		<a href="{{item.get_link}}">{{item.title}}</a>
@@ -6,3 +6,20 @@
 	</li>
 {% endfor %}
 </ul>
+
+
+<div class="collapse navbar-collapse js-navbar-collapse">
+	<ul class="nav navbar-nav">
+
+		{% for item in menu %}
+			<li class="{{item.classes | join(' ')}} top-tier dropdown mega-dropdown">
+				{#{{ dump(item) }}#}
+				<a href="{{item.get_link}}" class="top-link dropdown-toggle hidden-xs">{{item.title}}</a>
+				<a href="{{item.get_link}}" class="top-link dropdown-toggle visible-xs-block" data-toggle="dropdown">{{item.title}}</a>
+				{% include "sub-menu.twig" with {'menu': item} %}
+			</li>
+		{% endfor %}
+
+	</ul>
+
+</div>

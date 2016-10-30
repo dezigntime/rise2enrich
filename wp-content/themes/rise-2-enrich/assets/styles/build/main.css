@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -5833,15 +5834,6 @@ a.thumbnail.active {
   color: #843534;
 }
 
-@-webkit-keyframes progress-bar-stripes {
-  from {
-    background-position: 40px 0;
-  }
-  to {
-    background-position: 0 0;
-  }
-}
-
 @keyframes progress-bar-stripes {
   from {
     background-position: 40px 0;
@@ -5881,7 +5873,6 @@ a.thumbnail.active {
 
 .progress.active .progress-bar,
 .progress-bar.active {
-  -webkit-animation: progress-bar-stripes 2s linear infinite;
   animation: progress-bar-stripes 2s linear infinite;
 }
 
@@ -6715,15 +6706,11 @@ button.close {
 }
 
 .modal.fade .modal-dialog {
-  -webkit-transform: translate(0, -25%);
   transform: translate(0, -25%);
-  transition: -webkit-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
-  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
 }
 
 .modal.in .modal-dialog {
-  -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
 }
 
@@ -7155,26 +7142,20 @@ button.close {
 
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {
-    transition: -webkit-transform 0.6s ease-in-out;
     transition: transform 0.6s ease-in-out;
-    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-perspective: 1000px;
     perspective: 1000px;
   }
   .carousel-inner > .item.next, .carousel-inner > .item.active.right {
-    -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
     left: 0;
   }
   .carousel-inner > .item.prev, .carousel-inner > .item.active.left {
-    -webkit-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
     left: 0;
   }
   .carousel-inner > .item.next.left, .carousel-inner > .item.prev.right, .carousel-inner > .item.active {
-    -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     left: 0;
   }
@@ -7680,18 +7661,125 @@ body {
   font-weight: 300;
 }
 
-body.home {
-  background: url(https://upload.wikimedia.org/wikipedia/commons/8/82/2009-0617-Ontonagon-school.jpg) no-repeat center center fixed;
-  background-size: cover;
+@media (min-width: 979px) {
+  ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+  }
 }
 
-body.home {
-  background: url(http://www.valleytech.k12.ma.us/cms/lib8/MA01907491/Centricity/ModuleInstance/1627/School%20Entrance.jpg) no-repeat center center fixed;
-  background-size: cover;
+.navbar-nav > li > .dropdown-menu {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  width: 200px;
+  font-weight: bold;
+}
+
+.mega-dropdown-menu {
+  width: 100%;
+}
+
+.top-tier {
+  position: static !important;
+}
+
+.mega-dropdown-menu {
+  padding: 20px 0px;
+  width: 100%;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.mega-dropdown-menu > li > ul {
+  padding: 0;
+  margin: 0;
+}
+
+.mega-dropdown-menu > li > ul > li {
+  list-style: none;
+}
+
+.mega-dropdown-menu > li > ul > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.428571429;
+  color: #999;
+  white-space: normal;
+}
+
+.mega-dropdown-menu > li ul > li > a:hover,
+.mega-dropdown-menu > li ul > li > a:focus {
+  text-decoration: none;
+  color: #444;
+  background-color: #f5f5f5;
+}
+
+.mega-dropdown-menu .dropdown-header {
+  color: #428bca;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.mega-dropdown-menu form {
+  margin: 3px 20px;
+}
+
+.mega-dropdown-menu .form-group {
+  margin-bottom: 3px;
+}
+
+.nav > li > a {
+  text-align: center;
+}
+
+.nav > li > a:hover {
+  text-decoration: none;
+  background-color: #5bc0de;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-nav-main li.top-tier {
+    display: table !important;
+  }
+}
+
+.navbar-toggle {
+  background-color: #31708f;
+  border: 1px solid #5bc0de;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+  background-color: #5bc0de;
+  border-color: #337ab7;
+}
+
+.nav > li > a:focus {
+  background-color: #5bc0de;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: #5bc0de;
+}
+
+body {
+  font-family: 'Open Sans', 'sans-serif';
+  background: #f0f0f0;
+  background: url(https://pcbx.us/bfjb.jpg);
 }
 
 .header {
-  background-color: #3cb7f7;
+  background-color: #222e51;
 }
 
 .header nav ul {
@@ -7709,7 +7797,7 @@ body.home {
 }
 
 .header .nav-main {
-  margin-top: 50px;
+  margin-top: 24px;
   margin-bottom: 18px;
 }
 
@@ -7732,26 +7820,123 @@ body.home {
 }
 
 .hdr-logo img {
-  width: 130px;
-  position: absolute;
-  z-index: 999;
-  left: 33%;
+  width: 69px;
+  margin-left: 39px;
 }
 
 .site-left-col {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(34, 46, 81, 0.8);
   overflow: auto;
-  height: 100vh;
   color: #fff;
   padding: 30px;
+  margin-top: 30px;
 }
 
 .site-right-col {
+  background: rgba(34, 46, 81, 0.8);
+  overflow: auto;
+  color: #fff;
   padding: 30px;
   overflow: auto;
-  height: 100vh;
+  margin-top: 30px;
 }
 
 h1 {
-  color: #3DB7F5;
+  color: #ffffff;
+}
+
+.quick-links-container a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.quick-links-container > a:after {
+  display: inline-block;
+  content: "";
+  font-family: "FontAwesome";
+  -webkit-font-smoothing: antialiased !important;
+  font-weight: normal;
+  speak: none;
+  padding-left: 5px;
+}
+
+.quick-links-container .students-quick-link {
+  cursor: pointer;
+  margin-top: 34px;
+}
+
+.quick-links-container .students-quick-link a {
+  padding: 10px;
+  border: 0;
+  border: 1px solid #d0d0d0;
+}
+
+.blue-background {
+  background-color: #222e51;
+}
+
+.top-nav-main li.top-tier {
+  display: inline-block;
+  margin: 0 15px 0 15px;
+}
+
+.top-nav-main li.top-tier a.top-link {
+  color: #fff;
+  font-size: 20px;
+}
+
+.page-content {
+  padding: 45px 0;
+}
+
+.footer-container {
+  background: #222e51;
+  padding: 20px;
+  color: #fff;
+}
+
+.navmod {
+  list-style: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  overflow: hidden;
+}
+
+.navmod a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  font-weight: normal;
+  color: #fff;
+  line-height: 22px;
+  padding: 0.625em 0.625em;
+  display: block;
+}
+
+.navmod a:hover {
+  background-color: #222e51;
+  outline: 0;
+}
+
+.main-mid-content {
+  min-height: calc(100vh - 50px);
+}
+
+.breadcrumbs {
+  background-color: #fbfbfb;
+  padding: 10px 0;
+  color: #777373;
+  font-size: 18px;
+  border-bottom: solid 1px #ccc;
+  margin-top: 300px;
+}
+
+.regular-page-content {
+  background-color: #fff;
+}
+
+.regular-page-content h1.article-h1 {
+  color: #000;
 }

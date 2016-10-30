@@ -1,75 +1,118 @@
 {% block html_head_container %}
 
-{% include 'html-header.twig' %}
-	{% block head %}
-	{% endblock %}
-	</head>
+    {% include 'html-header.twig' %}
+    {% block head %}
+    {% endblock %}
+    </head>
 {% endblock %}
 
-	<body class="{{body_class}} rise-{{foo}}" data-template="base.twig">
-		<header class="header" >
-			{% block header %}
-				<div class="wrapper container">
-					<div class="col-md-4">
-						<nav id="nav-main" class="nav-main" role="navigation">
-							{% include "menu.twig" with {'menu': menu.get_items} %}
-						</nav><!-- #nav -->
-					</div>
+<body class="{{ body_class }} rise-{{ foo }}" data-template="base.twig">
+{% block header %}
 
-					<div class="col-md-4">
-						<h1 class="hdr-logo" role="banner">
-							<a class="hdr-logo-link" href="/" rel="home">
-								{# site.name #}
-								<img class="text-center" srcset="{{ theme.link }}/assets/images/home/rise_main_logo.png@2x.jpg 2x" src="{{ theme.link }}/assets/images/home/rise_main_logo.png" />
-							</a>
-						</h1>
-					</div>
 
-					<div class="col-md-2 text-center">
-						<nav id="nav-main" class="nav-main" role="navigation">
-							{% include "menu-right.twig" with {'menu': menu_right.get_items} %}
-						</nav><!-- #nav -->
-					</div>
+<div class="top-nav-main blue-background">
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="hdr-logo" role="banner">
+                    <a class="hdr-logo-link" href="/" rel="home">
+                        {# site.name #}
+                        <img class="text-center" srcset="{{ theme.link }}/assets/images/home/rise_logo_v2.png 2x"
+                             src="{{ theme.link }}/assets/images/home/rise_logo_v2.png"/>
+                    </a>
+                </div>
+            </div>
 
-					<div class="col-md-2">
-						<ul class="social-block pull-left">
-							<li>
-								<span class="icon"> <i class="fa fa-twitter" aria-hidden="true"></i></span>
-							</li>
-							<li>
-								<span class="icon"> <i class="fa fa-facebook" aria-hidden="true"></i></span>
-							</li>
-						</ul>
-
-					</div>
+            {% include "menu.twig" with {'menu': menu.get_items} %}
+            <!-- /.nav-collapse -->
+        </nav>
+    </div>
+</div>
 
 
 
-				</div>
-			{% endblock %}
-		</header>
 
-		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
-			<div class="wrapper {{sidebar_class}}">
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
-			</div>
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
-		</section>
 
-		{#
-		{% block footer %}
-			<footer id="footer">
-				{% include 'footer.twig' %}
-			</footer>
-			{{ function('wp_footer') }}
-		{% endblock %}
-		#}
-	</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <header class="header hidden">
+
+        <div class="wrapper container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="hdr-logo" role="banner">
+                        <a class="hdr-logo-link" href="/" rel="home">
+                            {# site.name #}
+                            <img class="text-center" srcset="{{ theme.link }}/assets/images/home/rise_logo_v2.png 2x"
+                                 src="{{ theme.link }}/assets/images/home/rise_logo_v2.png"/>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-10 hidden">
+                    <nav id="nav-main" class="nav-main" role="navigation">
+                        {% include "menu.twig" with {'menu': menu.get_items} %}
+                    </nav><!-- #nav -->
+                </div>
+
+
+                <div class="col-md-2 text-center hidden">
+                    <nav id="nav-main" class="nav-main" role="navigation">
+                        {% include "menu-right.twig" with {'menu': menu_right.get_items} %}
+                    </nav><!-- #nav -->
+                </div>
+            </div>
+        </div>
+
+    </header>
+{% endblock %}
+
+<section id="content" role="main" class="content-wrapper">
+    {% if title %}<h1>{{ title }}</h1>{% endif %}
+    <div class="wrapper {{ sidebar_class }}">
+        {% block content %}
+            Sorry, no content
+        {% endblock %}
+    </div>
+    {% if sidebar %}
+        <aside class="layout-sidebar">
+            {{ sidebar }}
+        </aside>
+    {% endif %}
+</section>
+
+
+{% block footer %}
+    <footer id="footer">
+        {% include 'footer.twig' %}
+    </footer>
+    {{ function('wp_footer') }}
+{% endblock %}
+
+</body>
 </html>

@@ -1,0 +1,49 @@
+{% if menu.get_children %}
+
+    <ul class="dropdown-menu mega-dropdown-menu row">
+
+        {% if pageHasImage(menu) %}
+
+        <li class="col-sm-3">
+            <ul>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <a href="#"><img src="{{getImageForPage(menu)}}" class="img-responsive" alt=""></a>
+                            <h4>
+                                <small></small>
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- End Carousel Inner -->
+                </div>
+                <!-- /.carousel -->
+                <li class="divider"></li>
+            </ul>
+        </li>
+        <li class="col-sm-3">
+            <h3> {{ getPageName(menu) }}</h3>
+            <div>
+                {{ getPageSnippet(menu) }}
+            </div>
+        </li>
+
+        {% endif %}
+
+        {% for child in menu.get_children %}
+            <li class="col-sm-3">
+                <ul>
+                    <li class="dropdown-header"><a href="{{ child.get_link }}">{{ child.title }}</a></li>
+                    <li class="divider"></li>
+                    <!-- Sample Nav Item -->
+                    <!--
+                    <li class="dropdown-header">Tops</li>
+                    <li><a href="#">Good Typography</a></li>
+                    <li class="divider"></li>
+                    -->
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endif %}

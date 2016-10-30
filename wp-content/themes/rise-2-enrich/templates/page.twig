@@ -1,33 +1,76 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div class="content-wrapper">
+    <div class="content-wrapper container-fluid {% if isTopLevelPage %}main-mid-content{% endif %}"
+         style="background:url({{ TimberImage(post.get_field('background_image')).src }});background-size: cover;">
 
 
-		<div class="site-left-col col-lg-6">
-			<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-				<section class="article-content">
-					<h1 class="article-h1">{{post.title}}</h1>
-					<div class="article-body">
-						{{post.content}}
-					</div>
-				</section>
-			</article>
-
-			{% block footer %}
-				<footer id="footer">
-					{% include 'footer.twig' %}
-				</footer>
-				{{ function('wp_footer') }}
-			{% endblock %}
-
-		</div>
-
-		<div class="site-right-col col-lg-6">
-
-		</div>
+        <div class="quick-links-container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-1">
+                    <h1>Rise Enrichment Career Institute</h1>
+                </div>
+                <div class="col-md-2 col-md-offset-1 pull-right">
+                    <div class="students-quick-link">
+                        <a href="">Students <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
+        {% if isTopLevelPage %}
+            <div class="row page-content">
+                <div class="site-left-col col-lg-3 col-lg-offset-1">
+                    <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+                        <section class="article-content">
+                            <h1 class="article-h1">{{ post.title }}</h1>
+                            <div class="article-body">
+                                <ul class="navmod">
+                                    {% for child in pageChildren %}
+                                        <li class="">
+                                            <a href="{{ child.get_link }}">{{ child.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </section>
+                    </article>
+                    {{ breadcrumbs() }}
+                </div>
 
-	</div><!-- /content-wrapper -->
+                <div class="site-right-col col-lg-6 col-lg-offset-1">
+                    <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+                        <section class="article-content">
+                            <h1 class="article-h1">{{ post.title }}</h1>
+                            <div class="article-body">
+                                {{ post.content }}
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </div>
+        {% else %}
+
+
+            <div class="row breadcrumbs">
+                <div class="col-lg-12">
+                    You are Here: Home {{ breadcrumbs() }}
+                </div>
+            </div>
+
+            <div class="row regular-page-content">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1 class="article-h1">{{ post.title }}</h1>
+                    <div>
+                        {{ post.content }}
+                    </div>
+                </div>
+            </div>
+
+
+
+        {% endif %}
+
+    </div><!-- /content-wrapper -->
 {% endblock %}

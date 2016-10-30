@@ -19,6 +19,8 @@ class StarterSite extends TimberSite {
 		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+        add_action( 'init', array( $this, 'initBreadCrumb' ) );
+
 		parent::__construct();
 	}
 
@@ -42,17 +44,74 @@ class StarterSite extends TimberSite {
 		return $context;
 	}
 
+	// Custom Functions
 	function myfoo( $text ) {
 		$text .= ' bar!';
 		return $text;
 	}
 
+    function getImageForPage( $id ) {
+        return 'http://www.ryecountryday.org/uploaded/images3/splash/arts.jpg';
+    }
+
+
 	function add_to_twig( $twig ) {
 		/* this is where you can add your own fuctions to twig */
 		$twig->addExtension( new Twig_Extension_StringLoader() );
 		$twig->addFilter('myfoo', new Twig_SimpleFilter('myfoo', array($this, 'myfoo')));
+
+
+        $pageHasImage = new Twig_SimpleFunction('pageHasImage', function ($menuItem) {
+            $pageID = $menuItem->object_id;
+            $page = new TimberPost( $pageID );
+            $thumbnailID = $page->_thumbnail_id;
+            $pageImageObject = new TimberImage($thumbnailID);
+            return $pageImageObject->src ? true : false;
+        });
+        $getImageForPage = new Twig_SimpleFunction('getImageForPage', function ($menuItem) {
+            $pageID = $menuItem->object_id;
+            $page = new TimberPost( $pageID );
+            $thumbnailID = $page->_thumbnail_id;
+            $pageImageObject = new TimberImage($thumbnailID);
+            return $pageImageObject->src;
+        });
+
+        $getPageSnippet = new Twig_SimpleFunction('getPageSnippet', function ($menuItem) {
+            $pageID = $menuItem->object_id;
+            $page = new TimberPost( $pageID );
+            return $page->top_navigation_snippet;
+        });
+
+        $getPageName = new Twig_SimpleFunction('getPageName', function ($menuItem) {
+            $pageID = $menuItem->object_id;
+            $page = new TimberPost( $pageID );
+            return $page->post_title;
+        });
+
+
+
+        $twig->addFunction($getPageName);
+        $twig->addFunction($getPageSnippet);
+        $twig->addFunction($pageHasImage);
+        $twig->addFunction($getImageForPage);
+
+
 		return $twig;
 	}
+
+
+	function initBreadCrumb (){
+
+        if(function_exists('bcn_display')) {
+            function breadcrumbs() { return bcn_display(); };
+            TimberHelper::function_wrapper('breadcrumbs');
+        }
+
+
+    }
+
+
+
 
 }
 
