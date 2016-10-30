@@ -46,11 +46,11 @@ foreach ($menu->items as $menuItem) {
 
 //    echo json_encode($menuItem);
 //
-//    echo "Page Level: " .$menuItem->level;
-//    echo " Page Name: " . $menuItem->name. "<br/>";
-//
-//    echo " Page Name: " . $menuItem->name;
-//    echo " Page Name: " . $currentPageName . "<br/><br/>";
+    echo "Page Level: " .$menuItem->level;
+    echo " Page Name: " . $menuItem->name. "<br/>";
+
+    echo " Page Name: " . $menuItem->name;
+    echo " Page Name: " . $currentPageName . "<br/><br/>";
 
 
 
