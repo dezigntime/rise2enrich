@@ -105,6 +105,9 @@ class StarterSite extends TimberSite {
         if(function_exists('bcn_display')) {
             function breadcrumbs() { return bcn_display(); };
             TimberHelper::function_wrapper('breadcrumbs');
+        }else{
+            function breadcrumbs() { return ""; };
+            TimberHelper::function_wrapper('breadcrumbs');
         }
 
 
