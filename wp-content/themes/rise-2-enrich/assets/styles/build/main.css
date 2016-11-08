@@ -7772,6 +7772,10 @@ body {
   background-color: #5bc0de;
 }
 
+.navbar {
+  margin: 0 0;
+}
+
 body {
   font-family: 'Open Sans', 'sans-serif';
   background: #f0f0f0;
