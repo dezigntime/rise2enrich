@@ -7944,3 +7944,15 @@ h1 {
 .regular-page-content h1.article-h1 {
   color: #000;
 }
+
+.footer-container .logo {
+  margin-top: 20px;
+}
+
+.footer-mid-context .fa {
+  font-size: 90px;
+}
+
+.footer-mid-context h2.header {
+  color: #00aeef;
+}
