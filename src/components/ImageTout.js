@@ -6,7 +6,8 @@ class ImageTout extends Component {
         super(props);
         this.state = {
             degrees: props.degrees || 0,
-            src : "/dist/" + props.src || 'http://via.placeholder.com/350x150'
+            src : "/dist/" + props.src || 'http://via.placeholder.com/350x150',
+            width: props.width || '100%'
         };
     }
 
@@ -17,7 +18,7 @@ class ImageTout extends Component {
 
         return (
             <div style={styles.imageStyle}>
-                <img style={{transform : `rotate(${this.state.degrees}deg)`}} src={this.state.src}/>
+                <img  style={{transform : `rotate(${this.state.degrees}deg)`, width: this.state.width}} src={this.state.src}/>
             </div>
         )
 

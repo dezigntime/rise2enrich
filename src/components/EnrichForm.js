@@ -7,8 +7,8 @@ const CCRCImage = require('../../images/CCRC.png');
 const RiseLogo = require('../../images/RiseLogo.png');
 const R2AfterschoolProgram = require('../../images/R2AfterschoolProgram.png');
 
-const SchoolImage1 = require('../../images/SchoolImage1.png');
-const SchoolImage2 = require('../../images/SchoolImage2.png');
+const back_top_kids = require('../../images/back_top_kids.png');
+const back_bottom_kids = require('../../images/back_bottom_kids.png');
 
 class EnrichForm extends React.Component {
     constructor(props) {
@@ -62,9 +62,13 @@ class EnrichForm extends React.Component {
         return (
             <div className="row">
                 <div className="col">
-                    <div className="d-flex flex-column justify-content-center align-items-center">
-                        <ImageTout style={styles.toutItem} degrees="10" src={SchoolImage1} />
-                        <ImageTout style={styles.toutItem} degrees="-10" src={SchoolImage2} />
+                    <div className="d-flex flex-column justify-content-between align-items-center">
+                        <div style={{marginTop:20}}>
+                            <ImageTout degrees="10" width="400px" src={back_top_kids} />
+                        </div>
+                        <div style={{marginTop:50}}>
+                            <ImageTout degrees="-10" width="400px" src={back_bottom_kids} />
+                        </div>
                     </div>
                 </div>
                 <div className="col">
@@ -135,7 +139,6 @@ class EnrichForm extends React.Component {
 
 
                 </div>
-
 
                 <SweetAlert
                     show={this.state.showAlert}
