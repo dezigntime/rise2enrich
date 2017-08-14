@@ -7,7 +7,7 @@ export default class Button extends React.Component {
         super();
 
         this.state = {
-            showModal: true
+            showModal: false
         }
 
     }
