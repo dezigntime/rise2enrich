@@ -173,7 +173,7 @@ const styles = {
         padding: 10,
         marginBottom: 30,
         cursor: 'pointer',
-        margin: '10'
+        margin: 10
     },
     buttonCancelStyle : {
         borderRadius: 10,
@@ -184,7 +184,7 @@ const styles = {
         padding: 10,
         marginBottom: 30,
         cursor: 'pointer',
-        margin: '10'
+        margin: 10
     }
 }
 
