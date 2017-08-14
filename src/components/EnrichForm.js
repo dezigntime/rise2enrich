@@ -9,6 +9,7 @@ const R2AfterschoolProgram = require('../../images/R2AfterschoolProgram.png');
 
 const back_top_kids = require('../../images/back_top_kids.png');
 const back_bottom_kids = require('../../images/back_bottom_kids.png');
+const EEMImage = require('../../images/EEM.png');
 
 class EnrichForm extends React.Component {
     constructor(props) {
@@ -136,8 +137,18 @@ class EnrichForm extends React.Component {
                         <button style={styles.buttonCancelStyle} onClick={this.props.handleCloseModal}>Cancel</button>
                         <button onClick={this.handleSubmit.bind(this)} style={styles.buttonStyle} id="submit" name="submit" type="submit" value="Submit">Submit</button>
                     </div>
-
-
+                    <hr/>
+                    <div className="d-flex justify-content-end">
+                        <div className="col-6">
+                            44339 Beech Ave. Lacaster CA, 93534 <br/>
+                            661-206-9237<br/>
+                            http://rise2enrich.org/<br/>
+                            Hours: M - F 3:00pm - 6:00pm
+                        </div>
+                        <div className="d-flex flex-row col-6 justify-content-end">
+                            <img width="100" height="100" src={"/dist/" + EEMImage}/>
+                        </div>
+                    </div>
                 </div>
 
                 <SweetAlert
