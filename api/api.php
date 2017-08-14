@@ -8,7 +8,13 @@ if (isset($_POST["secret"]) && $_POST["secret"] === "rise2encrichform") {
     $email = $_POST['email'];
     $number = $_POST['phone'];
 
-    $from = 'Rise 2 Enrich';
+
+    $from = 'From: no-reply@rise2enrich.com' . "\r\n" .
+        'Reply-To: no-reply@rise2enrich.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+
+//    $from = 'Rise 2 Enrich';
 //    $to = 'callawayc@lifesourcecharterschool.org';
     $to = 'smoothlikejazz@gmail.com';
     $subject = 'Rise2Enrich Contact Form Submission';
