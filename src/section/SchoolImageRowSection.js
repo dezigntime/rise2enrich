@@ -17,7 +17,7 @@ class SchoolImageRowSection extends Component {
         const {contentContainer} = styles;
 
         return (
-            <div style={styles.contentContainer} className="d-flex flex-row justify-content-center align-items-center">
+            <div style={{marginTop:'-50px'}} className="d-flex flex-row justify-content-center align-items-center">
                 <ImageTout style={styles.toutItem} degrees="10" src={SchoolImage1} />
                 <ImageTout style={styles.toutItem} degrees="-10" src={SchoolImage2} />
                 <ImageTout style={styles.toutItem} degrees="10" src={SchoolImage3} />
@@ -29,9 +29,6 @@ class SchoolImageRowSection extends Component {
 }
 
 const styles = {
-    contentContainer: {
-        marginTop:-50
-    }
 };
 
 export default SchoolImageRowSection;

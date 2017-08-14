@@ -1,6 +1,6 @@
-import React from "react";
+import React, {Component} from "react";
 
-export default class NewsItem extends React.Component {
+class ListItem extends Component {
     constructor() {
         super();
     }
@@ -12,3 +12,5 @@ export default class NewsItem extends React.Component {
         );
     }
 }
+
+export default ListItem;
