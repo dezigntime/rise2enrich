@@ -16,7 +16,7 @@ if (isset($_POST["secret"]) && $_POST["secret"] === "rise2encrichform") {
 
 //    $from = 'Rise 2 Enrich';
 //    $to = 'callawayc@lifesourcecharterschool.org';
-    $to = 'smoothlikejazz@gmail.com';
+    $to = 'jhouston@lifesourcecharterschool.org';
     $subject = 'Rise2Enrich Contact Form Submission';
 
     $body = "Form details below:\n
