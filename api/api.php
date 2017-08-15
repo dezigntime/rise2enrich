@@ -61,24 +61,16 @@ if (isset($_POST["secret"]) && $_POST["secret"] === "rise2encrichform") {
 // If there are no errors, send the email
     if ( !isset($errName) && !isset($errEmail) && !isset($errMessage) ) {
 
-
-
-
         $message = '<html><body>';
-        $message .= '<img src="http://local.rise2enrich.org/dist/5dfe9f9e4a7036eb026641124fb75438.png" alt="Website Change Request" />';
+        $message .= '<img src="http://rise2enrich.org/dist/5dfe9f9e4a7036eb026641124fb75438.png" alt="Website Change Request" />';
         $message .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
         $message .= "<tr style='background: #eee;'><td><strong>First Name:</strong> </td><td>" . strip_tags($firstName) . "</td></tr>";
         $message .= "<tr style='background: #eee;'><td><strong>Last Name:</strong> </td><td>" . strip_tags($lastName) . "</td></tr>";
         $message .= "<tr><td><strong>Email:</strong> </td><td>" . strip_tags($email) . "</td></tr>";
-        $message .= "<tr><td><strong>Phone:</strong> </td><td>" . strip_tags($phone) . "</td></tr>";
+        $message .= "<tr><td><strong>Phone:</strong> </td><td>" . strip_tags($number) . "</td></tr>";
         $message .= "<tr><td><strong>Best Time To Reach:</strong> </td><td>" . strip_tags($besttimetoreach) . "</td></tr>";
         $message .= "</table>";
         $message .= "</body></html>";
-
-
-
-
-
 
 
         if (mail($to, $subject, $message, $headers)) {
