@@ -19,10 +19,10 @@ class Main extends React.Component {
         return (
             <div className="App">
                 <div className="row justify-content-md-center">
-                    <div className="col-7">
+                    <div className="col-lg-7 col-md-12">
                         <Hero/>
                     </div>
-                    <div className="col-5">
+                    <div className="col-lg-5 col-md-12">
                         <LogoSection/>
                     </div>
                 </div>

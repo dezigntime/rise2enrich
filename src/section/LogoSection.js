@@ -26,8 +26,8 @@ class LogoSection extends Component {
                 </div>
 
                 <div>
-                    <div className="">
-                        <img src={"/dist/" + R2AfterschoolProgram}/>
+                    <div className="text-center">
+                        <img className="img-fluid"  src={"/dist/" + R2AfterschoolProgram}/>
                     </div>
                     <div style={contentContainer}>
                         Affordable $65 a week for all activities. <br/>
