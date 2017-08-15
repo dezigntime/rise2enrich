@@ -235,7 +235,7 @@ class EnrichForm extends React.Component {
                     <div className="d-flex justify-content-end">
                         <div className="col-6">
                             44339 Beech Ave. Lacaster CA, 93534 <br/>
-                            661-206-9237<br/>
+                            <a href="tel:661-206-9237">661-206-9237</a> <br/>
                             http://rise2enrich.org/<br/>
                             Hours: M - F 2:00pm - 6:00pm
                         </div>
